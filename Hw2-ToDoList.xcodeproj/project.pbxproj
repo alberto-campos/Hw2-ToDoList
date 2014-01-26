@@ -19,6 +19,16 @@
 		5A87809318947561009BE046 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A87807B18947561009BE046 /* UIKit.framework */; };
 		5A87809B18947561009BE046 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A87809918947561009BE046 /* InfoPlist.strings */; };
 		5A87809D18947561009BE046 /* Hw2_ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87809C18947561009BE046 /* Hw2_ToDoListTests.m */; };
+		5A8780A71894758D009BE046 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8780A61894758D009BE046 /* Storyboard.storyboard */; };
+		5A8780A918947786009BE046 /* tasks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A8780A818947786009BE046 /* tasks.plist */; };
+		5A8780AC189477D4009BE046 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8780AB189477D4009BE046 /* plus.png */; };
+		5A8A433F1894B32500EBDE15 /* todo_list_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A433D1894B32500EBDE15 /* todo_list_add.png */; };
+		5A8A43401894B32500EBDE15 /* todo_list_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A433E1894B32500EBDE15 /* todo_list_remove.png */; };
+		5A8A43431894B3D400EBDE15 /* TasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A43421894B3D400EBDE15 /* TasksTableViewController.m */; };
+		5A8A43451894B5C200EBDE15 /* message_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A43441894B5C200EBDE15 /* message_edit.png */; };
+		5A8A43471894B60D00EBDE15 /* configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A43461894B60D00EBDE15 /* configuration.png */; };
+		5A8A434A1894C98700EBDE15 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A43491894C98700EBDE15 /* CustomCell.m */; };
+		5A8A434C1894CE7900EBDE15 /* forms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A434B1894CE7900EBDE15 /* forms.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,18 @@
 		5A87809818947561009BE046 /* Hw2-ToDoListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hw2-ToDoListTests-Info.plist"; sourceTree = "<group>"; };
 		5A87809A18947561009BE046 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5A87809C18947561009BE046 /* Hw2_ToDoListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hw2_ToDoListTests.m; sourceTree = "<group>"; };
+		5A8780A61894758D009BE046 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		5A8780A818947786009BE046 /* tasks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tasks.plist; sourceTree = "<group>"; };
+		5A8780AB189477D4009BE046 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		5A8A433D1894B32500EBDE15 /* todo_list_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_list_add.png; sourceTree = "<group>"; };
+		5A8A433E1894B32500EBDE15 /* todo_list_remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_list_remove.png; sourceTree = "<group>"; };
+		5A8A43411894B3D400EBDE15 /* TasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewController.h; sourceTree = "<group>"; };
+		5A8A43421894B3D400EBDE15 /* TasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewController.m; sourceTree = "<group>"; };
+		5A8A43441894B5C200EBDE15 /* message_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_edit.png; sourceTree = "<group>"; };
+		5A8A43461894B60D00EBDE15 /* configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configuration.png; sourceTree = "<group>"; };
+		5A8A43481894C98700EBDE15 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		5A8A43491894C98700EBDE15 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		5A8A434B1894CE7900EBDE15 /* forms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forms.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +99,13 @@
 		5A87806B18947561009BE046 = {
 			isa = PBXGroup;
 			children = (
+				5A8780A61894758D009BE046 /* Storyboard.storyboard */,
+				5A8A43481894C98700EBDE15 /* CustomCell.h */,
+				5A8A43491894C98700EBDE15 /* CustomCell.m */,
+				5A8A43411894B3D400EBDE15 /* TasksTableViewController.h */,
+				5A8A43421894B3D400EBDE15 /* TasksTableViewController.m */,
+				5A8780A818947786009BE046 /* tasks.plist */,
+				5A8780AA189477B7009BE046 /* Images */,
 				5A87807D18947561009BE046 /* Hw2-ToDoList */,
 				5A87809618947561009BE046 /* Hw2-ToDoListTests */,
 				5A87807618947561009BE046 /* Frameworks */,
@@ -142,6 +171,19 @@
 				5A87809918947561009BE046 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A8780AA189477B7009BE046 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A8A43461894B60D00EBDE15 /* configuration.png */,
+				5A8A433D1894B32500EBDE15 /* todo_list_add.png */,
+				5A8A43441894B5C200EBDE15 /* message_edit.png */,
+				5A8A434B1894CE7900EBDE15 /* forms.png */,
+				5A8A433E1894B32500EBDE15 /* todo_list_remove.png */,
+				5A8780AB189477D4009BE046 /* plus.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +261,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8A43451894B5C200EBDE15 /* message_edit.png in Resources */,
+				5A8A434C1894CE7900EBDE15 /* forms.png in Resources */,
+				5A8A43471894B60D00EBDE15 /* configuration.png in Resources */,
 				5A87808218947561009BE046 /* InfoPlist.strings in Resources */,
+				5A8780AC189477D4009BE046 /* plus.png in Resources */,
+				5A8A433F1894B32500EBDE15 /* todo_list_add.png in Resources */,
 				5A87808A18947561009BE046 /* Images.xcassets in Resources */,
+				5A8780A71894758D009BE046 /* Storyboard.storyboard in Resources */,
+				5A8A43401894B32500EBDE15 /* todo_list_remove.png in Resources */,
+				5A8780A918947786009BE046 /* tasks.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A87808818947561009BE046 /* AppDelegate.m in Sources */,
+				5A8A43431894B3D400EBDE15 /* TasksTableViewController.m in Sources */,
+				5A8A434A1894C98700EBDE15 /* CustomCell.m in Sources */,
 				5A87808418947561009BE046 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +493,7 @@
 				5A8780A218947561009BE046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A8780A318947561009BE046 /* Build configuration list for PBXNativeTarget "Hw2-ToDoListTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +502,7 @@
 				5A8780A518947561009BE046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

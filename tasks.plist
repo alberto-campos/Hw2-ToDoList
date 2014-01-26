@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Title</key>
+		<string>e.g. file taxes</string>
+		<key>Category</key>
+		<string>Recurring</string>
+		<key>Due</key>
+		<date>2014-01-26T03:14:50Z</date>
+		<key>Created</key>
+		<date>2014-01-26T03:38:15Z</date>
+		<key>Complete</key>
+		<false/>
+		<key>Icon</key>
+		<string>icon.png</string>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>e.g. go to the gym</string>
+		<key>Category</key>
+		<string>Recurring</string>
+		<key>Due</key>
+		<date>2014-01-26T03:14:50Z</date>
+		<key>Created</key>
+		<date>2014-01-26T03:38:15Z</date>
+		<key>Complete</key>
+		<false/>
+		<key>Icon</key>
+		<string>icon.png</string>
+	</dict>
+    <dict>
+		<key>Title</key>
+		<string>e.g. lunch with customer</string>
+		<key>Category</key>
+		<string>Recurring</string>
+		<key>Due</key>
+		<date>2014-01-26T03:14:50Z</date>
+		<key>Created</key>
+		<date>2014-01-26T03:38:15Z</date>
+		<key>Complete</key>
+		<false/>
+		<key>Icon</key>
+		<string>icon.png</string>
+	</dict>
+	<dict/>
+</array>
+</plist>
