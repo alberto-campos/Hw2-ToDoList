@@ -18,6 +18,8 @@
 
 
 -(void)saveToPlist;
+-(void)updatePlist;
+-(void)sortArrayAlpha;
 
 @end
 
@@ -44,6 +46,8 @@
 {
     [super viewDidLoad];
  
+    
+    
     //listPath = [[self docsDir]stringByAppendingPathComponent:@"tasks.plist"];
     listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
     
@@ -58,6 +62,8 @@
    // todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     
+    [self sortArrayAlpha];
+    
    // NSMutableDictionary *allTasks = [NSMutableDictionary dictionaryWithContentsOfFile:listPath];
     
     //NSLog(@"count: %i", [tasksArray count]);
@@ -68,7 +74,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     
     
@@ -113,7 +119,7 @@
     NSString *taskTitle = todoArray[indexPath.row];
 
     customCell.CustomTitleLabel.text = taskTitle;
-    customCell.CustomRecurringLabel.text = @"Recurring";
+    customCell.CustomRecurringLabel.text = @"Uncategorized";
     
     
     return customCell;
@@ -134,10 +140,14 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [todoArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        
+        [self saveToPlist];
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        // handled by "Add" button
     }   
 }
 
@@ -176,9 +186,29 @@
     NSLog(@"Success: %@", listPath);
 }
 
--(void)deleteFromPlist
+-(void)updatePlist
 {
-    
+    //NSMutableArray *tempArray = [NSMutableArray alloc]
+}
+
+-(void)deleteItemFromArray
+{
+//    for(id item in todoArray) {
+//        if([item isEqual:itemToDelete]) {
+//            [todoArray removeObject:item];
+//            break;
+//        }
+//    }
+//
+}
+
+-(void)sortArrayAlpha
+{
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:todoArray ascending:YES];
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
+    NSMutableArray *sortedArray;
+    todoArray = [todoArray sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (IBAction)addButton:(id)sender
@@ -187,6 +217,8 @@
     
     [todoArray addObject:self.customTaskTextField.text];
     [self saveToPlist];
+    
+    [self.tableView reloadData];
     
     //Leave it for now. Going back to arrays.
 //    [task setObject:@"Icon" forKey:@"Icon"];
