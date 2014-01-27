@@ -62,7 +62,7 @@
    // todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     
-    [self sortArrayAlpha];
+   // [self sortArrayAlpha];
     
    // NSMutableDictionary *allTasks = [NSMutableDictionary dictionaryWithContentsOfFile:listPath];
     
@@ -213,12 +213,10 @@
 
 - (IBAction)addButton:(id)sender
 {
-    // User tapped the 'add' button
-    
-    [todoArray addObject:self.customTaskTextField.text];
-    [self saveToPlist];
-    
-    [self.tableView reloadData];
+
+        [todoArray insertObject:self.customTaskTextField.text atIndex:0];
+        [self saveToPlist];
+        [self.tableView reloadData];
     
     //Leave it for now. Going back to arrays.
 //    [task setObject:@"Icon" forKey:@"Icon"];
