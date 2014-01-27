@@ -215,8 +215,13 @@
     if (self.customTaskTextField.text.length > 0)
     {
         [self.addButton setEnabled:FALSE];
-        [self updatePlist];
+       
     }
+}
+
+- (IBAction)customAddTaskTextEdit:(id)sender {
+    
+    [self updatePlist];
 }
 
 @end

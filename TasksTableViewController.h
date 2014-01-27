@@ -18,5 +18,6 @@
 - (IBAction)addButton:(id)sender;
 - (IBAction)customTaskTextField:(id)sender;
 - (IBAction)customTaskTouchOutside:(id)sender;
+- (IBAction)customAddTaskTextEdit:(id)sender;
 
 @end

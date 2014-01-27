@@ -22,6 +22,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                     <connections>
+                                        <action selector="customAddTaskTextEdit:" destination="lDt-TZ-LJC" eventType="editingDidEnd" id="myi-7h-tdq"/>
                                         <action selector="customTaskTextField:" destination="lDt-TZ-LJC" eventType="editingChanged" id="t32-pt-z1c"/>
                                         <action selector="customTaskTouchOutside:" destination="lDt-TZ-LJC" eventType="touchUpOutside" id="Bwf-sb-KPm"/>
                                     </connections>
