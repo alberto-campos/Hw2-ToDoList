@@ -16,5 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *CustomIconImage;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *customLabel;
+@property (strong, nonatomic) IBOutlet UITextView *customTextView;
+
+@property (nonatomic, copy) NSString *model;
 
 @end

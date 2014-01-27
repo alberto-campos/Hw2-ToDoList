@@ -9,9 +9,12 @@
 #import "TasksTableViewController.h"
 #import "CustomCell.h"
 
+#define kFontSize 15.0 // fontsize
+#define kTextViewWidth 206
+
 @interface TasksTableViewController ()
 {
-    CustomCell *model;
+    CustomCell *myCell;
 }
 
 @property (nonatomic, strong)NSMutableDictionary *task;
@@ -46,7 +49,19 @@
 {
     [super viewDidLoad];
     
+    // set the model
+    myCell.model = @"The arc of the moral universe is long, but it bends towards justice.";
     
+    // create a rect for the text view so it's the right size coming out of IB. Size it to something that is form fitting to the string in the model.
+    float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+    CGRect textViewRect = CGRectMake(74, 4, kTextViewWidth, height);
+    
+    myCell.customTextView.frame = textViewRect;
+    
+    // now that we've resized the frame properly, let's run this through again to get proper dimensions for the contentSize.
+    myCell.customTextView.contentSize = CGSizeMake(kTextViewWidth, [self heightForTextView:myCell.customTextView containingString:myCell.model]);
+    
+    myCell.customTextView.text = myCell.model;
     
 
     
@@ -96,16 +111,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    //CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    myCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //task = tasksArray[indexPath.row];
     NSString *taskTitle = todoArray[indexPath.row];
 
-    customCell.CustomTitleLabel.text = taskTitle;
-    customCell.CustomRecurringLabel.text = @"Uncategorized";
+    myCell.CustomTitleLabel.text = taskTitle;
+    myCell.CustomRecurringLabel.text = @"Uncategorized";
     
     
-    return customCell;
+    return myCell;
 }
 
 
@@ -218,8 +233,8 @@
 
 // Inside tableView:cellForRowAtIndexPath:
 //
-//CustomCell.CustomTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
-//CustomCell.CustomTitleLabel.numberOfLines = self.numberOfTextRows;
+//myCell.CustomTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
+//myCell.CustomTitleLabel.numberOfLines = self.numberOfTextRows;
 // numberOfTextRows is an integer, declared in the class
 
 
@@ -237,10 +252,37 @@
 
 - (void) textViewDidChange:(UITextView *)textView
 {
-    model = textView.text;
+    myCell.model = textView.text;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
 }
+
+- (void) textViewDidEndEditing:(UITextView *)textView
+{
+    if (textView == myCell.customTextView) {
+        myCell.model = textView.text;
+    }
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        
+        if (myCell.customTextView.contentSize.height >= 44) {
+            float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+            return height + 8; // a little extra padding is needed
+        }
+        else {
+            return self.tableView.rowHeight;
+        }
+        
+    }
+    else {
+        return self.tableView.rowHeight;
+    }
+}
+
 
 @end
