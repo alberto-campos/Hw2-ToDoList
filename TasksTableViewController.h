@@ -16,5 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
 
 - (IBAction)addButton:(id)sender;
+- (IBAction)customTaskTextField:(id)sender;
+- (IBAction)customTaskTouchOutside:(id)sender;
 
 @end

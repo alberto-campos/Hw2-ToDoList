@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong)NSMutableArray *tasksArrayTEMP;
 @property (nonatomic, strong)NSMutableDictionary *task;
-
 @property (nonatomic, strong)NSMutableArray *todoArray;
 
 
@@ -45,40 +44,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
     
-    
-    //listPath = [[self docsDir]stringByAppendingPathComponent:@"tasks.plist"];
+    [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+     
     listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
     
     //TODO: check if PLIST file is corrupted or has any issues warn user and exit.
     //if (![[NSFileManager defaultManager]fileExistsAtPath:listPath])
     //{
-        //[[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"tasks" ofType:@"plist"] toPath:listPath error:nil];
         [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"todo" ofType:@"plist"] toPath:listPath error:nil];
    // }
-    
-   // tasksArray = [NSArray arrayWithContentsOfFile:listPath];
-   // todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
+
     todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     
-   // [self sortArrayAlpha];
-    
-   // NSMutableDictionary *allTasks = [NSMutableDictionary dictionaryWithContentsOfFile:listPath];
-    
-    //NSLog(@"count: %i", [tasksArray count]);
-    NSLog(@"count: %i", [todoArray count]);
-    
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    
-    
-    
+
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"To Do List";
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,13 +116,12 @@
     return YES;
 }
 
-
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.view endEditing:YES];
         [todoArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -147,18 +129,13 @@
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        // handled by "Add" button
     }   
 }
-
-
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-
-
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,24 +159,16 @@
 
 -(void)saveToPlist
 {
+    self.customTaskTextField.text = @"";
     [todoArray writeToFile:listPath atomically:YES];
     NSLog(@"Success: %@", listPath);
 }
 
 -(void)updatePlist
 {
-    //NSMutableArray *tempArray = [NSMutableArray alloc]
-}
-
--(void)deleteItemFromArray
-{
-//    for(id item in todoArray) {
-//        if([item isEqual:itemToDelete]) {
-//            [todoArray removeObject:item];
-//            break;
-//        }
-//    }
-//
+    [todoArray insertObject:self.customTaskTextField.text atIndex:0];
+    [self saveToPlist];
+    [self.tableView reloadData];
 }
 
 -(void)sortArrayAlpha
@@ -213,10 +182,8 @@
 
 - (IBAction)addButton:(id)sender
 {
-
-        [todoArray insertObject:self.customTaskTextField.text atIndex:0];
-        [self saveToPlist];
-        [self.tableView reloadData];
+    [self.view endEditing:YES];
+    [self updatePlist];
     
     //Leave it for now. Going back to arrays.
 //    [task setObject:@"Icon" forKey:@"Icon"];
@@ -227,6 +194,29 @@
 //    [task setValue:self.customTaskTextField.text forKey:@"Complete"];
 //    [tasksArray addObject:task];
     
+}
+
+- (IBAction)customTaskTextField:(id)sender {
+    
+    if (self.customTaskTextField.text.length > 0)
+    {
+        [self.addButton setEnabled:TRUE];
+    }
+    else
+    {
+        [self.addButton setEnabled:FALSE];
+    }
+}
+
+- (IBAction)customTaskTouchOutside:(id)sender {
+    
+    [self.view endEditing:YES];
+    
+    if (self.customTaskTextField.text.length > 0)
+    {
+        [self.addButton setEnabled:FALSE];
+        [self updatePlist];
+    }
 }
 
 @end
