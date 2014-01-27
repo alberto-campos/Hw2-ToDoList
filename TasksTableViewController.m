@@ -10,21 +10,22 @@
 #import "CustomCell.h"
 
 @interface TasksTableViewController ()
+{
+    CustomCell *model;
+}
 
-@property (nonatomic, strong)NSMutableArray *tasksArrayTEMP;
 @property (nonatomic, strong)NSMutableDictionary *task;
 @property (nonatomic, strong)NSMutableArray *todoArray;
 
 
 -(void)saveToPlist;
 -(void)updatePlist;
--(void)sortArrayAlpha;
 
 @end
 
 @implementation TasksTableViewController
 
-@synthesize tasksArrayTEMP, task, todoArray;
+@synthesize task, todoArray;
 
 
 -(NSString *)docsDir
@@ -44,6 +45,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
+
+    
+    
+    
+    
+    
     
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
      
@@ -88,16 +98,6 @@
     static NSString *CellIdentifier = @"Cell";
     CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-//    task = tasksArray[indexPath.row];
-//    NSString *taskTitle = task[@"Title"];
-//    NSString *taskCategory = task[@"Category"];
-//    NSString *icon = task[@"Icon"];
-//    BOOL taskComplete = task[@"Complete"];
-//    UIImage *taskImage = [UIImage imageNamed:icon];
-//    customCell.CustomTitleLabel.text = taskTitle;
-//    customCell.CustomRecurringLabel.text = taskCategory;
- 
     //task = tasksArray[indexPath.row];
     NSString *taskTitle = todoArray[indexPath.row];
 
@@ -171,28 +171,20 @@
     [self.tableView reloadData];
 }
 
--(void)sortArrayAlpha
-{
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:todoArray ascending:YES];
-    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
-    NSMutableArray *sortedArray;
-    todoArray = [todoArray sortedArrayUsingDescriptors:sortDescriptors];
-}
+//-(void)sortArrayAlpha
+//{
+//    NSSortDescriptor *sortDescriptor;
+//    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:todoArray ascending:YES];
+//    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
+//    NSMutableArray *sortedArray;
+//    todoArray = [todoArray sortedArrayUsingDescriptors:sortDescriptors];
+//}
 
 - (IBAction)addButton:(id)sender
 {
     [self.view endEditing:YES];
     [self updatePlist];
     
-    //Leave it for now. Going back to arrays.
-//    [task setObject:@"Icon" forKey:@"Icon"];
-//    [task setValue:self.customTaskTextField.text forKey:@"Title"];
-//    [task setValue:self.customTaskTextField.text forKey:@"Category"];
-//    [task setValue:self.customTaskTextField.text forKey:@"Due"];
-//    [task setValue:self.customTaskTextField.text forKey:@"Created"];
-//    [task setValue:self.customTaskTextField.text forKey:@"Complete"];
-//    [tasksArray addObject:task];
     
 }
 
@@ -222,6 +214,33 @@
 - (IBAction)customAddTaskTextEdit:(id)sender {
     
     [self updatePlist];
+}
+
+// Inside tableView:cellForRowAtIndexPath:
+//
+//CustomCell.CustomTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
+//CustomCell.CustomTitleLabel.numberOfLines = self.numberOfTextRows;
+// numberOfTextRows is an integer, declared in the class
+
+
+
+
+- (CGFloat)heightForTextView:(UITextView*)textView containingString:(NSString*)string
+{
+    float horizontalPadding = 24;
+    float verticalPadding = 16;
+    float widthOfTextView = textView.contentSize.width - horizontalPadding;
+    float height = [string sizeWithFont:[UIFont systemFontOfSize:18.0] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
+    
+    return height;
+}
+
+- (void) textViewDidChange:(UITextView *)textView
+{
+    model = textView.text;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
 }
 
 @end
