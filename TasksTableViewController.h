@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TasksTableViewController : UITableViewController
+@interface TasksTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSString *listPath;
 }
+@property (strong, nonatomic) IBOutlet UITextField *customTaskTextField;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
 
+- (IBAction)addButton:(id)sender;
 
 @end

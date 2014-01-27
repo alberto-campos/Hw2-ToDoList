@@ -11,14 +11,20 @@
 
 @interface TasksTableViewController ()
 
-@property (nonatomic, strong)NSArray *tasksArray;
-@property (nonatomic, strong)NSDictionary *task;
+@property (nonatomic, strong)NSMutableArray *tasksArrayTEMP;
+@property (nonatomic, strong)NSMutableDictionary *task;
+
+@property (nonatomic, strong)NSMutableArray *todoArray;
+
+
+-(void)saveToPlist;
 
 @end
 
 @implementation TasksTableViewController
 
-@synthesize tasksArray, task;
+@synthesize tasksArrayTEMP, task, todoArray;
+
 
 -(NSString *)docsDir
 {
@@ -38,16 +44,24 @@
 {
     [super viewDidLoad];
  
-    listPath = [[self docsDir]stringByAppendingPathComponent:@"tasks.plist"];
+    //listPath = [[self docsDir]stringByAppendingPathComponent:@"tasks.plist"];
+    listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
     
-    if (![[NSFileManager defaultManager]fileExistsAtPath:listPath])
-    {
-        [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"tasks" ofType:@"plist"] toPath:listPath error:nil];
-    }
+    //TODO: check if PLIST file is corrupted or has any issues warn user and exit.
+    //if (![[NSFileManager defaultManager]fileExistsAtPath:listPath])
+    //{
+        //[[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"tasks" ofType:@"plist"] toPath:listPath error:nil];
+        [[NSFileManager defaultManager]copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"todo" ofType:@"plist"] toPath:listPath error:nil];
+   // }
     
-    tasksArray = [NSArray arrayWithContentsOfFile:listPath];
-    NSLog(@"count: %i", [tasksArray count]);
+   // tasksArray = [NSArray arrayWithContentsOfFile:listPath];
+   // todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
+    todoArray = [NSMutableArray arrayWithContentsOfFile:listPath];
     
+   // NSMutableDictionary *allTasks = [NSMutableDictionary dictionaryWithContentsOfFile:listPath];
+    
+    //NSLog(@"count: %i", [tasksArray count]);
+    NSLog(@"count: %i", [todoArray count]);
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -76,7 +90,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tasksArray count];
+    //return [tasksArray count];
+    return [todoArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,23 +100,21 @@
     CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    task = tasksArray[indexPath.row];
-    NSString *taskTitle = task[@"Title"];
-    NSString *taskCategory = task[@"Category"];
-    NSString *icon = task[@"Icon"];
-    BOOL taskComplete = task[@"Complete"];
-    
-    UIImage *taskImage = [UIImage imageNamed:icon];
-    
+//    task = tasksArray[indexPath.row];
+//    NSString *taskTitle = task[@"Title"];
+//    NSString *taskCategory = task[@"Category"];
+//    NSString *icon = task[@"Icon"];
+//    BOOL taskComplete = task[@"Complete"];
+//    UIImage *taskImage = [UIImage imageNamed:icon];
+//    customCell.CustomTitleLabel.text = taskTitle;
+//    customCell.CustomRecurringLabel.text = taskCategory;
+ 
+    //task = tasksArray[indexPath.row];
+    NSString *taskTitle = todoArray[indexPath.row];
+
     customCell.CustomTitleLabel.text = taskTitle;
-    customCell.CustomRecurringLabel.text = taskCategory;
+    customCell.CustomRecurringLabel.text = @"Recurring";
     
-   // cell.imageView.image = taskImage;
-    
-    
-   // taskComplete = [[tasksArray objectAtIndex:1] boolValue];
-   // [myArray addObject:[NSNumber numberWithInteger:score]];
-   // [myArray addObject:[NSNumber numberWithBool:flag]];
     
     return customCell;
 }
@@ -156,5 +169,34 @@
 }
 
  */
+
+-(void)saveToPlist
+{
+    [todoArray writeToFile:listPath atomically:YES];
+    NSLog(@"Success: %@", listPath);
+}
+
+-(void)deleteFromPlist
+{
+    
+}
+
+- (IBAction)addButton:(id)sender
+{
+    // User tapped the 'add' button
+    
+    [todoArray addObject:self.customTaskTextField.text];
+    [self saveToPlist];
+    
+    //Leave it for now. Going back to arrays.
+//    [task setObject:@"Icon" forKey:@"Icon"];
+//    [task setValue:self.customTaskTextField.text forKey:@"Title"];
+//    [task setValue:self.customTaskTextField.text forKey:@"Category"];
+//    [task setValue:self.customTaskTextField.text forKey:@"Due"];
+//    [task setValue:self.customTaskTextField.text forKey:@"Created"];
+//    [task setValue:self.customTaskTextField.text forKey:@"Complete"];
+//    [tasksArray addObject:task];
+    
+}
 
 @end
