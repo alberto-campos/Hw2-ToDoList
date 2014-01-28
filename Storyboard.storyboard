@@ -70,7 +70,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9E-H1-c2y">
-                                            <rect key="frame" x="263" y="43" width="51" height="30"/>
+                                            <rect key="frame" x="257" y="0.0" width="51" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="Modify">
@@ -82,9 +82,9 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="o9E-H1-c2y" secondAttribute="bottom" id="5ho-Mp-TzT"/>
+                                        <constraint firstItem="o9E-H1-c2y" firstAttribute="top" secondItem="dqW-7r-k6p" secondAttribute="top" id="ANG-bc-8oP"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="top" secondItem="dqW-7r-k6p" secondAttribute="top" id="Xlv-Im-Jda"/>
-                                        <constraint firstAttribute="trailing" secondItem="o9E-H1-c2y" secondAttribute="trailing" constant="6" id="fos-JU-zyD"/>
+                                        <constraint firstAttribute="trailing" secondItem="o9E-H1-c2y" secondAttribute="trailing" constant="12" id="eOc-xd-jns"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="leading" secondItem="dqW-7r-k6p" secondAttribute="leading" constant="7" id="fyW-mr-m3E"/>
                                         <constraint firstAttribute="trailing" secondItem="LDb-8D-33h" secondAttribute="trailing" constant="47" id="lVo-Cf-6QQ"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="leading" secondItem="dqW-7r-k6p" secondAttribute="leading" constant="7" id="uhq-Rg-2ad"/>
