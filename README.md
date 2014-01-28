@@ -8,8 +8,8 @@ This app allows the user to enter a new task and hit enter or click 'Add' to sto
 ## Features
     A user may add a new to do item inline
     A user may edit a to do item inline
-    A user may delete a to do item
-    A user may rearrange the order of to do items
+    A user may delete a to do item (using swipe)
+    A user may rearrange the order of to do items (clicking Edit)
     To Do items are immediately saved after being edited
     Saved To Do items are loaded on launch
     Allow to do items to span multiple lines.  Table rows should grow and shrink as appropriate.
@@ -20,6 +20,10 @@ This app allows the user to enter a new task and hit enter or click 'Add' to sto
 When you launch the app for the first time there will be only one task by default. If removed, the page will be empty.
 
 Notice the keyboard appears automatically and the focus is set to the text field to add a new task. To dismiss the keyboard simply hit enter and leave the text field blank.
+
+When the user swipes over a task, then the 'Delete' button becomes visible. When the user taps this button the task is removed from the list.
+
+When the user taps the "Edit" link, then the cells activate the options to move the cells around. After the user drags and drops a task, then the app adjusts the list and places the task at its new position.
 
 ![Launching app](https://github.com/alberto-campos/Hw2-ToDoList/tree/752cb654d64ef9ba72947193e50c756dc1579f34/todo-startWithKeyboardEnabled.png)
 
