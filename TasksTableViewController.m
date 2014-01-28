@@ -51,16 +51,18 @@
     [super viewDidLoad];
     
     // set the model
-    myCell.model = @"";
-    float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-    CGRect textViewRect = CGRectMake(74, 4, kTextViewWidth, height);
-    myCell.customTextView.frame = textViewRect;
-    myCell.customTextView.contentSize = CGSizeMake(kTextViewWidth, [self heightForTextView:myCell.customTextView containingString:myCell.model]);
-    myCell.customTextView.text = myCell.model;
+//    myCell.model = @"";
+//    float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+//    CGRect textViewRect = CGRectMake(74, 4, kTextViewWidth, height);
+//    myCell.customTextView.frame = textViewRect;
+//    myCell.customTextView.contentSize = CGSizeMake(kTextViewWidth, [self heightForTextView:myCell.customTextView containingString:myCell.model]);
+//    myCell.customTextView.text = myCell.model;
     
 
 
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.customTaskTextField becomeFirstResponder];
+    
     listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
     
     //TODO: check if PLIST file is corrupted or has any issues warn user and exit.
@@ -134,6 +136,12 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    
+    NSObject *tempObj = [todoArray objectAtIndex:fromIndexPath.row];
+    [todoArray removeObjectAtIndex:fromIndexPath.row];
+    [todoArray insertObject:tempObj atIndex:toIndexPath.row];
+    [self saveToPlist];
+    
 }
 
 // Override to support conditional rearranging of the table view.
