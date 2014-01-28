@@ -52,28 +52,15 @@
     
     // set the model
     myCell.model = @"";
-    
-    // create a rect for the text view so it's the right size coming out of IB. Size it to something that is form fitting to the string in the model.
     float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
     CGRect textViewRect = CGRectMake(74, 4, kTextViewWidth, height);
-    
     myCell.customTextView.frame = textViewRect;
-    
-    // now that we've resized the frame properly, let's run this through again to get proper dimensions for the contentSize.
     myCell.customTextView.contentSize = CGSizeMake(kTextViewWidth, [self heightForTextView:myCell.customTextView containingString:myCell.model]);
-    
     myCell.customTextView.text = myCell.model;
     
 
-    
-    
-    
-    
-    
-    
-  //  [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
+
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
-     
     listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
     
     //TODO: check if PLIST file is corrupted or has any issues warn user and exit.
@@ -106,14 +93,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return [tasksArray count];
     return [todoArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    //CustomCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     myCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //task = tasksArray[indexPath.row];
     NSString *taskTitle = todoArray[indexPath.row];
@@ -173,16 +158,23 @@
 
 -(void)saveToPlist
 {
+
     self.customTaskTextField.text = @"";
     [todoArray writeToFile:listPath atomically:YES];
     NSLog(@"Success: %@", listPath);
+        
 }
 
 -(void)updatePlist
 {
-    [todoArray insertObject:self.customTaskTextField.text atIndex:0];
-    [self saveToPlist];
-    [self.tableView reloadData];
+    
+    if (![self.customTaskTextField.text isEqual: @""])
+    {
+        [todoArray insertObject:self.customTaskTextField.text atIndex:0];
+        [self saveToPlist];
+        [self.tableView reloadData];
+    }
+    [self.addButton setEnabled:FALSE];
 }
 
 - (IBAction)addButton:(id)sender
@@ -227,10 +219,6 @@
     float horizontalPadding = 24;
     float verticalPadding = 10;
     float widthOfTextView = textView.contentSize.width - horizontalPadding;
-    //float height = [string sizeWithFont:[UIFont systemFontOfSize:18.0] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
-
-    
-    //float widthOfTextView = textView.contentSize.width - horizontalPadding;
     float height = [string sizeWithFont:[UIFont systemFontOfSize:kFontSize] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
     
     return height;
@@ -266,39 +254,21 @@
     
     NSString *mytext = todoArray[indexPath.row];
     myCell.customTextView.text = mytext;
-
-   // myCell.model = mytext;
-   myCell.customTextView.sizeToFit;
-    NSInteger i =myCell.customTextView.contentSize.height;
-    NSLog(@"String: %i", i);
-    NSLog(@"%@", mytext);
     
     if (indexPath.section == 0 && indexPath.row == 0) {
 
         if (myCell.customTextView.contentSize.height >= 44) {
-          
-          //  float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-            
             return  [self getHeight:mytext] + 10;
         }
         else
         {
-           // NSInteger i = self.tableView.rowHeight;
-            
-            //float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-            //return self.tableView.rowHeight;
-           // return height;
             return  [self getHeight:mytext];
         }
         
     }
     else
     {
-        //NSInteger i = self.tableView.rowHeight;
         return  [self getHeight:mytext];
-        //float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-        //return self.tableView.rowHeight;
-        //return height;
     }
 }
 
