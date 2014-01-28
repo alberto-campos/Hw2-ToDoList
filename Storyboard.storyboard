@@ -59,7 +59,7 @@
                                             <rect key="frame" x="7" y="0.0" width="266" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
                                         </textView>
@@ -70,10 +70,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9E-H1-c2y">
-                                            <rect key="frame" x="269" y="43" width="51" height="30"/>
+                                            <rect key="frame" x="263" y="43" width="51" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="Update">
+                                            <state key="normal" title="Modify">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -84,7 +84,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="o9E-H1-c2y" secondAttribute="bottom" id="5ho-Mp-TzT"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="top" secondItem="dqW-7r-k6p" secondAttribute="top" id="Xlv-Im-Jda"/>
-                                        <constraint firstAttribute="trailing" secondItem="o9E-H1-c2y" secondAttribute="trailing" id="fos-JU-zyD"/>
+                                        <constraint firstAttribute="trailing" secondItem="o9E-H1-c2y" secondAttribute="trailing" constant="6" id="fos-JU-zyD"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="leading" secondItem="dqW-7r-k6p" secondAttribute="leading" constant="7" id="fyW-mr-m3E"/>
                                         <constraint firstAttribute="trailing" secondItem="LDb-8D-33h" secondAttribute="trailing" constant="47" id="lVo-Cf-6QQ"/>
                                         <constraint firstItem="LDb-8D-33h" firstAttribute="leading" secondItem="dqW-7r-k6p" secondAttribute="leading" constant="7" id="uhq-Rg-2ad"/>

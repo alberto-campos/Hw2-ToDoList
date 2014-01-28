@@ -8,6 +8,7 @@
 
 #import "TasksTableViewController.h"
 #import "CustomCell.h"
+#import "SVProgressHUD.h"
 
 #define kFontSize 15.0 // fontsize
 #define kTextViewWidth 206
@@ -50,7 +51,7 @@
 {
     [super viewDidLoad];
 
-
+    [SVProgressHUD showWithStatus:@"Retrieving To Do list..."];
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.customTaskTextField becomeFirstResponder];
     
@@ -69,6 +70,7 @@
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"To Do List";
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,12 +131,10 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    
     NSObject *tempObj = [todoArray objectAtIndex:fromIndexPath.row];
     [todoArray removeObjectAtIndex:fromIndexPath.row];
     [todoArray insertObject:tempObj atIndex:toIndexPath.row];
     [self saveToPlist];
-    
 }
 
 // Override to support conditional rearranging of the table view.

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>323BAFA8-CC2B-42F7-84FE-BB9B81672CD7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hw2-ToDoList</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>539D8238-935A-4DD3-A839-B9928217F7FB</key>
+		<string>https://github.com/alberto-campos/Hw2-ToDoList.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hw2-ToDoList.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>539D8238-935A-4DD3-A839-B9928217F7FB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alberto-campos/Hw2-ToDoList.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>539D8238-935A-4DD3-A839-B9928217F7FB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>539D8238-935A-4DD3-A839-B9928217F7FB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hw2-ToDoList</string>
+		</dict>
+	</array>
+</dict>
+</plist>
