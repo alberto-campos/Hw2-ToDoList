@@ -130,6 +130,9 @@
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        NSObject *tempObj = myCell.customTextView.text;
+        [todoArray insertObject:tempObj atIndex:indexPath.row];
+        [self saveToPlist];
     }   
 }
 
@@ -221,16 +224,15 @@
     [self updatePlist];
 }
 
-
-- (CGFloat)heightForTextView:(UITextView*)textView containingString:(NSString*)string
-{
-    float horizontalPadding = 24;
-    float verticalPadding = 10;
-    float widthOfTextView = textView.contentSize.width - horizontalPadding;
-    float height = [string sizeWithFont:[UIFont systemFontOfSize:kFontSize] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
+- (IBAction)customUpdate:(id)sender {
     
-    return height;
+    [self.view endEditing:YES];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:myCell];
+    NSObject *tempObj = myCell.customTextView.text;
     
+    [todoArray insertObject:tempObj atIndex:indexPath.row];
+    [self saveToPlist];
+    NSLog(@"updating...");
 }
 
 - (void) textViewDidChange:(UITextView *)textView

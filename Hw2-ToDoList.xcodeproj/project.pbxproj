@@ -30,6 +30,10 @@
 		5A8A434A1894C98700EBDE15 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A43491894C98700EBDE15 /* CustomCell.m */; };
 		5A8A434C1894CE7900EBDE15 /* forms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8A434B1894CE7900EBDE15 /* forms.png */; };
 		5AD4AE8C1895857600E12D9C /* todo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4AE8B1895857600E12D9C /* todo.plist */; };
+		5AE2C11F1897B4B400F32BDE /* NoEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE2C11E1897B4B400F32BDE /* NoEdit.png */; };
+		5AE2C1211897B86500F32BDE /* noEditMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE2C1201897B86500F32BDE /* noEditMini.png */; };
+		5AE2C1231897B8BE00F32BDE /* todo_list_addMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE2C1221897B8BE00F32BDE /* todo_list_addMini.png */; };
+		5AE2C1251897B95B00F32BDE /* message_editMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE2C1241897B95B00F32BDE /* message_editMini.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		5A8A43491894C98700EBDE15 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		5A8A434B1894CE7900EBDE15 /* forms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forms.png; sourceTree = "<group>"; };
 		5AD4AE8B1895857600E12D9C /* todo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = todo.plist; sourceTree = "<group>"; };
+		5AE2C11E1897B4B400F32BDE /* NoEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoEdit.png; sourceTree = "<group>"; };
+		5AE2C1201897B86500F32BDE /* noEditMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noEditMini.png; sourceTree = "<group>"; };
+		5AE2C1221897B8BE00F32BDE /* todo_list_addMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_list_addMini.png; sourceTree = "<group>"; };
+		5AE2C1241897B95B00F32BDE /* message_editMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_editMini.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +187,13 @@
 		5A8780AA189477B7009BE046 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5AE2C11E1897B4B400F32BDE /* NoEdit.png */,
+				5AE2C1201897B86500F32BDE /* noEditMini.png */,
 				5A8A43461894B60D00EBDE15 /* configuration.png */,
 				5A8A433D1894B32500EBDE15 /* todo_list_add.png */,
+				5AE2C1221897B8BE00F32BDE /* todo_list_addMini.png */,
 				5A8A43441894B5C200EBDE15 /* message_edit.png */,
+				5AE2C1241897B95B00F32BDE /* message_editMini.png */,
 				5A8A434B1894CE7900EBDE15 /* forms.png */,
 				5A8A433E1894B32500EBDE15 /* todo_list_remove.png */,
 				5A8780AB189477D4009BE046 /* plus.png */,
@@ -266,10 +278,14 @@
 			files = (
 				5A8A43451894B5C200EBDE15 /* message_edit.png in Resources */,
 				5A8A434C1894CE7900EBDE15 /* forms.png in Resources */,
+				5AE2C1251897B95B00F32BDE /* message_editMini.png in Resources */,
+				5AE2C1211897B86500F32BDE /* noEditMini.png in Resources */,
 				5A8A43471894B60D00EBDE15 /* configuration.png in Resources */,
 				5AD4AE8C1895857600E12D9C /* todo.plist in Resources */,
+				5AE2C11F1897B4B400F32BDE /* NoEdit.png in Resources */,
 				5A87808218947561009BE046 /* InfoPlist.strings in Resources */,
 				5A8780AC189477D4009BE046 /* plus.png in Resources */,
+				5AE2C1231897B8BE00F32BDE /* todo_list_addMini.png in Resources */,
 				5A8A433F1894B32500EBDE15 /* todo_list_add.png in Resources */,
 				5A87808A18947561009BE046 /* Images.xcassets in Resources */,
 				5A8780A71894758D009BE046 /* Storyboard.storyboard in Resources */,

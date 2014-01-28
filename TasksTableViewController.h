@@ -19,5 +19,6 @@
 - (IBAction)customTaskTextField:(id)sender;
 - (IBAction)customTaskTouchOutside:(id)sender;
 - (IBAction)customAddTaskTextEdit:(id)sender;
+- (IBAction)customUpdate:(id)sender;
 
 @end
