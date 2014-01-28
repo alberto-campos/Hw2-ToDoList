@@ -49,15 +49,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // set the model
-//    myCell.model = @"";
-//    float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-//    CGRect textViewRect = CGRectMake(74, 4, kTextViewWidth, height);
-//    myCell.customTextView.frame = textViewRect;
-//    myCell.customTextView.contentSize = CGSizeMake(kTextViewWidth, [self heightForTextView:myCell.customTextView containingString:myCell.model]);
-//    myCell.customTextView.text = myCell.model;
-    
 
 
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -102,7 +93,6 @@
 {
     static NSString *CellIdentifier = @"Cell";
     myCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //task = tasksArray[indexPath.row];
     NSString *taskTitle = todoArray[indexPath.row];
     myCell.customTextView.text = taskTitle;
     
