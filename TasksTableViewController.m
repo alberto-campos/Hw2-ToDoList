@@ -23,6 +23,7 @@
 
 -(void)saveToPlist;
 -(void)updatePlist;
+-(NSInteger)getHeight:(NSString *)str;
 
 @end
 
@@ -50,7 +51,7 @@
     [super viewDidLoad];
     
     // set the model
-    myCell.model = @"The arc of the moral universe is long, but it bends towards justice.";
+    myCell.model = @"";
     
     // create a rect for the text view so it's the right size coming out of IB. Size it to something that is form fitting to the string in the model.
     float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
@@ -70,6 +71,7 @@
     
     
     
+  //  [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.customTaskTextField addTarget:self.customTaskTextField action:@selector(resignFirstResponder) forControlEvents:UIControlEventEditingDidEndOnExit];
      
     listPath = [[self docsDir]stringByAppendingPathComponent:@"todo.plist"];
@@ -115,10 +117,7 @@
     myCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //task = tasksArray[indexPath.row];
     NSString *taskTitle = todoArray[indexPath.row];
-
-    myCell.CustomTitleLabel.text = taskTitle;
-    myCell.CustomRecurringLabel.text = @"Uncategorized";
-    
+    myCell.customTextView.text = taskTitle;
     
     return myCell;
 }
@@ -186,15 +185,6 @@
     [self.tableView reloadData];
 }
 
-//-(void)sortArrayAlpha
-//{
-//    NSSortDescriptor *sortDescriptor;
-//    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:todoArray ascending:YES];
-//    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
-//    NSMutableArray *sortedArray;
-//    todoArray = [todoArray sortedArrayUsingDescriptors:sortDescriptors];
-//}
-
 - (IBAction)addButton:(id)sender
 {
     [self.view endEditing:YES];
@@ -231,23 +221,20 @@
     [self updatePlist];
 }
 
-// Inside tableView:cellForRowAtIndexPath:
-//
-//myCell.CustomTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
-//myCell.CustomTitleLabel.numberOfLines = self.numberOfTextRows;
-// numberOfTextRows is an integer, declared in the class
-
-
-
 
 - (CGFloat)heightForTextView:(UITextView*)textView containingString:(NSString*)string
 {
     float horizontalPadding = 24;
-    float verticalPadding = 16;
+    float verticalPadding = 10;
     float widthOfTextView = textView.contentSize.width - horizontalPadding;
-    float height = [string sizeWithFont:[UIFont systemFontOfSize:18.0] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
+    //float height = [string sizeWithFont:[UIFont systemFontOfSize:18.0] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
+
+    
+    //float widthOfTextView = textView.contentSize.width - horizontalPadding;
+    float height = [string sizeWithFont:[UIFont systemFontOfSize:kFontSize] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
     
     return height;
+    
 }
 
 - (void) textViewDidChange:(UITextView *)textView
@@ -255,7 +242,6 @@
     myCell.model = textView.text;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-    
 }
 
 - (void) textViewDidEndEditing:(UITextView *)textView
@@ -265,22 +251,54 @@
     }
 }
 
+
+-(NSInteger)getHeight:(NSString *)str
+{
+    NSInteger thisHeight;
+    thisHeight = (str.length / kTextViewWidth) + 1;
+    
+    return thisHeight * 44;
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+    NSString *mytext = todoArray[indexPath.row];
+    myCell.customTextView.text = mytext;
+
+   // myCell.model = mytext;
+   myCell.customTextView.sizeToFit;
+    NSInteger i =myCell.customTextView.contentSize.height;
+    NSLog(@"String: %i", i);
+    NSLog(@"%@", mytext);
+    
     if (indexPath.section == 0 && indexPath.row == 0) {
-        
+
         if (myCell.customTextView.contentSize.height >= 44) {
-            float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
-            return height + 8; // a little extra padding is needed
+          
+          //  float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+            
+            return  [self getHeight:mytext] + 10;
         }
-        else {
-            return self.tableView.rowHeight;
+        else
+        {
+           // NSInteger i = self.tableView.rowHeight;
+            
+            //float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+            //return self.tableView.rowHeight;
+           // return height;
+            return  [self getHeight:mytext];
         }
         
     }
-    else {
-        return self.tableView.rowHeight;
+    else
+    {
+        //NSInteger i = self.tableView.rowHeight;
+        return  [self getHeight:mytext];
+        //float height = [self heightForTextView:myCell.customTextView containingString:myCell.model];
+        //return self.tableView.rowHeight;
+        //return height;
     }
 }
 
